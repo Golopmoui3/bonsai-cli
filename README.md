@@ -6,13 +6,14 @@
 
 **Local 1.58-bit Agent Runtime for Windows — powered by Rust, `llama-server`, TAC & Xray**
 
+[![CI](https://github.com/Golopmoui3/bonsai-cli/actions/workflows/ci.yml/badge.svg)](https://github.com/Golopmoui3/bonsai-cli/actions/workflows/ci.yml)
+[![Release](https://img.shields.io/github/v/release/Golopmoui3/bonsai-cli?style=flat-square&color=10b981)](https://github.com/Golopmoui3/bonsai-cli/releases/latest)
 [![Rust](https://img.shields.io/badge/Rust-2021-orange?style=flat-square&logo=rust)](https://www.rust-lang.org/)
 [![Platform](https://img.shields.io/badge/Platform-Windows%20x64-0078D6?style=flat-square&logo=windows)](https://www.microsoft.com/windows)
 [![Model](https://img.shields.io/badge/Model-Ternary--Bonsai--2--27B%20PTQ1__0-10b981?style=flat-square)](#-hardware--benchmarks)
-[![Version](https://img.shields.io/badge/Version-0.2.0-22d3ee?style=flat-square)](Cargo.toml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-f59e0b?style=flat-square)](LICENSE)
 
-[Features](#-features) • [Architecture](#-architecture) • [Benchmarks](#-hardware--benchmarks) • [Quick Start](#-quick-start) • [Commands](#-interactive-commands) • [Agent Tools](#-agent-tools) • [Security Notes](#-security--safety-notes)
+[Features](#-features) • [Demo](#-live-demo) • [Architecture](#-architecture) • [Benchmarks](#-hardware--benchmarks) • [Quick Start](#-quick-start) • [Commands](#-interactive-commands--cli-flags) • [Contributing](#-contributing)
 
 </div>
 
@@ -20,9 +21,19 @@
 
 **Bonsai CLI** (`v0.2.0`) is a lightweight, high-throughput Rust agent runtime built specifically to squeeze commercial-grade coding agent capabilities onto consumer 8 GB VRAM GPUs using **1.58-bit / PTQ1_0 ternary models** (`Ternary-Bonsai-2-27B-Uncensored-Heretic-PTQ1_0`), without external API fees or cloud lock-in.
 
+## 🎬 Live Demo
+
+<div align="center">
+  <img src="assets/demo.gif" alt="Bonsai CLI Live Interactive Demo" width="95%" />
+</div>
+
+<details>
+<summary>📸 View Static UI Showcase</summary>
+<br />
 <div align="center">
   <img src="assets/terminal-showcase.jpg" alt="Bonsai CLI Terminal UI" width="92%" />
 </div>
+</details>
 
 ---
 
@@ -74,7 +85,16 @@ Measured on local hardware via `llama-bench.exe` (`build d7b289683`):
 
 ## 🚀 Quick Start
 
-### Prerequisites
+### Option A — Prebuilt Binary (No Rust Required)
+
+1. Download **`bonsai-v0.2.0-windows-x64.zip`** (or `bonsai-windows-x64.exe`) from [**GitHub Releases**](https://github.com/Golopmoui3/bonsai-cli/releases/latest).
+2. Verify the SHA-256 checksum against `SHA256SUMS.txt` and extract `bonsai.exe` to `C:\Bonsai\`.
+3. Launch interactive agent mode:
+   ```powershell
+   .\bonsai.exe --start
+   ```
+
+### Option B — Build from Source
 
 - **Windows 10/11 x64**
 - **Rust toolchain** (`cargo` 2021 edition, MinGW or MSVC target)
@@ -152,16 +172,25 @@ Run `bonsai --help` for full usage details:
 
 ```text
 bonsai-cli/
+├── .github/workflows/ci.yml   # Windows CI (cargo check, test & release build)
 ├── assets/
 │   ├── architecture.jpg       # System overview diagram
 │   ├── banner.jpg             # Project hero banner
-│   └── terminal-showcase.jpg  # Terminal UI preview
+│   ├── demo.gif               # Animated interactive terminal demo
+│   └── terminal-showcase.jpg  # Static Terminal UI preview
 ├── scripts/
 │   └── bonsai.cmd             # UTF-8 Windows wrapper
 ├── src/
 │   └── main.rs                # Runtime, tools, TAC, Markdown, Xray & 31 tests
 ├── Cargo.lock
 ├── Cargo.toml
+├── CONTRIBUTING.md            # Development setup, invariants & PR checklist
 ├── LICENSE
 └── README.md
 ```
+
+---
+
+## 🤝 Contributing
+
+Contributions are welcome! Please read [**CONTRIBUTING.md**](CONTRIBUTING.md) for local setup, security/UTF-8 invariants, and PR requirements before submitting changes.
